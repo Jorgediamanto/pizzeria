@@ -150,8 +150,8 @@ button {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color:hotpink;
+    border: 3px solid #35e73e;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
