@@ -3,21 +3,17 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    
 }
 
-header {
-    background-color: #5c82ec;
-    color: #d15151;
-    text-align: center;
-    padding: 10px;
-}
+
 
 .team-roster {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 20px;
-    background-color: rgb(163, 167, 110);
+    background-color: rgb(50, 127, 134);
 }
 
 /* Estilos para los jugadores */
@@ -43,14 +39,18 @@ body {
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
+    background-color: rgb(50, 127, 134);
 }
 
 header {
-    background-color: #e35c5c;
-    color: #fff;
+    background-color: #5c79e3;
+    color: #daf434;
     text-align: center;
     padding: 20px 0;
-}
+   
+}    
+
+
 
 nav ul {
     list-style: none;
@@ -102,30 +102,56 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+.boton1, .boton2, .boton3, .boton4, .boton5 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+  }
 
-button:hover {
-    background-color: #555;
-}
-/* Estilo para el resultado de "victoria" en resultados.html */
-li.victoria {
-    background-color: #28a745; /* Fondo verde para victoria */
-    color: #fff; /* Texto blanco */
-    padding: 5px;
-    border-radius: 5px;
-}
+  .boton1:hover, .boton2:hover, .boton3:hover, .boton4:hover, .boton5:hover{
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+  }
 
-/* Estilo para el resultado de "empate" en resultados.html */
-li.empate {
-    background-color: #ffc107; /* Fondo amarillo para empate */
-    color: #000; /* Texto negro */
-    padding: 5px;
-    border-radius: 5px;
-}
+  .boton1:hover ~ .info1 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
 
-/* Estilo para el resultado de "derrota" en resultados.html */
-li.derrota {
-    background-color: #dc3545; /* Fondo rojo para derrota */
-    color: #fff; /* Texto blanco */
-    padding: 5px;
-    border-radius: 5px;
-}
+  .boton2:hover ~ .info2 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+  .boton3:hover ~ .info3 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+  .boton4:hover ~ .info4 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+  .boton5:hover ~ .info5 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+  
+  .contenedor {
+    text-align: center;
+    position: relative;
+  }
+  
+
+  .info1, .info2, .info3, .info4, .info5 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
