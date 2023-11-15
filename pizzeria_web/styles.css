@@ -193,3 +193,148 @@ button {
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+footer {
+    background-color: rgb(230, 46, 144);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+ .boton11, .boton12, .boton13, .boton14, .boton15 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.boton11:hover, .boton12:hover, .boton13:hover, .boton14:hover, .boton15:hover{
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+.boton11:hover ~ .info11, .boton12:hover ~ .info12, .boton13:hover ~ .info13, .boton14:hover ~ .info14, .boton15:hover ~ .info15{
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+}
+
+.info11, .info12, .info13, .info14, .info15{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.boton16,
+.boton17,
+.boton18,
+.boton19,
+.boton20 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.boton16:hover,
+.boton17:hover,
+.boton18:hover,
+.boton19:hover,
+.boton20:hover {
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+
+.boton16:hover ~ .info16,
+.boton17:hover ~ .info17,
+.boton18:hover ~ .info18,
+.boton19:hover ~ .info19,
+.boton20:hover ~ .info20 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+}
+
+.info16,
+.info17,
+.info18,
+.info19,
+.info20 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* ... Estilos anteriores ... */
+
+.boton21,
+.boton22,
+.boton23,
+.boton24,
+.boton25 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.boton21:hover,
+.boton22:hover,
+.boton23:hover,
+.boton24:hover,
+.boton25:hover {
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+
+.boton21:hover ~ .info21,
+.boton22:hover ~ .info22,
+.boton23:hover ~ .info23,
+.boton24:hover ~ .info24,
+.boton25:hover ~ .info25 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+}
+
+.info21,
+.info22,
+.info23,
+.info24,
+.info25 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ... Estilos anteriores ... */
