@@ -8,42 +8,18 @@ function guardarEnCSV(botonPresionado) {
     // Convertir el objeto a una cadena CSV
     var csvString = Object.values(datos).join(',') + '\n';
 
-    // Ruta del archivo CSV existente
-    var rutaArchivoCSV = 'tuarchivo.csv';
+    // Crear un objeto Blob para almacenar los datos CSV
+    var blob = new Blob([csvString], { type: 'text/csv;charset=utf-8' });
 
-    // Leer el contenido actual del archivo
-    var contenidoActual = '';
+    // Crear un enlace para descargar el archivo CSV
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'registro.csv';
+    
+    // Agregar el enlace al cuerpo del documento y hacer clic en él
+    document.body.appendChild(a);
+    a.click();
 
-    // Intentar leer el archivo
-    try {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', rutaArchivoCSV, false);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                contenidoActual = xhr.responseText;
-            }
-        };
-        xhr.send();
-    } catch (error) {
-        console.error('Error al leer el archivo CSV:', error);
-        return;
-    }
-
-    // Actualizar el contenido del archivo
-    var nuevoContenido = contenidoActual + csvString;
-
-    // Intentar escribir en el archivo
-    try {
-        var xhr = new XMLHttpRequest();
-        xhr.open('PUT', rutaArchivoCSV, false);
-        xhr.setRequestHeader('Content-Type', 'text/csv;charset=utf-8');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log('Archivo CSV actualizado correctamente.');
-            }
-        };
-        xhr.send(nuevoContenido);
-    } catch (error) {
-        console.error('Error al escribir en el archivo CSV:', error);
-    }
+    // Eliminar el enlace después de la descarga
+    document.body.removeChild(a);
 }
