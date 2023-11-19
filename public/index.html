@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar CSV</title>
-    <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Web Básica</title>
 </head>
 <body>
-    <button id="boton1" onclick="guardarEnCSV('boton1')">Botón 1</button>
-    <button id="boton2" onclick="guardarEnCSV('boton2')">Botón 2</button>
+  <h1>Formulario de Envío</h1>
+  <form id="miFormulario">
+    <label for="informacion">Información:</label>
+    <input type="text" id="informacion" name="informacion" required>
+    <button type="button" onclick="enviarInformacion()">Enviar</button>
+  </form>
 
-    <script src="script.js"></script>
+  <script>
+    function enviarInformacion() {
+      var informacion = document.getElementById('informacion').value;
+
+      // Envía la información al servidor
+      fetch('/enviar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ informacion: informacion }),
+      });
+    }
+  </script>
 </body>
 </html>
