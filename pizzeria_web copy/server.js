@@ -7,6 +7,7 @@ const port = 5501;
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'));
 
 app.post('/saveToCSV', (req, res) => {
     const userInput = req.body.userInput;
@@ -32,3 +33,7 @@ app.post('/saveToCSV', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+  });
