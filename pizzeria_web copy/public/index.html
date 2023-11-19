@@ -53,7 +53,7 @@
                 Ingredientes especiales como pesto de albahaca y piñones.
             </div>
         </div>
-    
+        
         <div class="contenedor">
             <a href="lasalsa.html" class="boton5" onclick="guardarEnCSV('boton5')">Masa de Papa y Romero</a>
             <div id="masa5" class="info5">Elaborada con papas para una textura suave y esponjosa.
@@ -62,22 +62,33 @@
             </div>
         </div>
     </section>
-    <h1> Elige tu masa: (1,2,3,4,5)</h1>
+    <h1> Elige tu masa: (1, 2, 3, 4, 5)</h1>
     <h1>
-    <input id="userInput"> <br> <br>
-    <button onclick="myFunction()"> Continuar </button>
+        <input id="userInput"> <br> <br>
+        <button onclick="myFunction()"> Continuar </button>
     </h1>
     <h1 id="message"> </h1>
-
+    
     <script>
-        function myFunction(){
+        function myFunction() {
             let userInput = document.querySelector("#userInput");
             let message = document.querySelector("#message");
-
-            message.innerHTML = "Tu masa elegida es: " + userInput.value;
+    
+            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
+                alert("Por favor, introduce un número válido entre 1 y 5.");
+                userInput.value = ""; // Clear the input field
+            } else {
+                // Make an AJAX request to the server to save the data
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/saveToCSV", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                xhr.send(JSON.stringify({ userInput: userInput.value }));
+    
+                message.innerHTML = "Tu masa elegida es: " + userInput.value;
+            }
         }
-
     </script>
+    
 
 </body>
 </html>
