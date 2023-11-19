@@ -6,6 +6,12 @@ body {
     
 }
 
+h1{
+    text-align: center;
+    color: rgb(134, 50, 50);
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
 
 
 .team-roster {
