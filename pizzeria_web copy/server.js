@@ -38,6 +38,11 @@ app.get('/tecnicascoccion.html', (req, res) => {
     res.sendFile(__dirname + '/public/tecnicascoccion.html');
 });
 
+app.get('/final.html', (req, res) => {
+    res.sendFile(__dirname + '/public/final.html');
+});
+
+
 app.get('/styles.css', (req, res) => {
     res.sendFile(__dirname + '/public/styles.css');
 });
@@ -55,7 +60,7 @@ app.post('/saveToCSV', (req, res) => {
 
     // Modificar el archivo CSV directamente en lugar de llamar al script de Python
     const csvWriter = createCsvWriter({
-        path: '/Users/jorgediamantopoulos/Documents/GitHub/pizzeria/pizzeria_web copy/public/pizzzeria.csv',
+        path: './pizzzeria.csv',
         header: [
             { id: 'column1', title: 'Número' },
             // Agrega más columnas según tus necesidades

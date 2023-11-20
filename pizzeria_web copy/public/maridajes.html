@@ -65,7 +65,7 @@
 
     </section>
 
-    <h1> Elige tu maridaje: (1, 2, 3, 4, 5)</h1>
+    <h1> Elige tu maridaje: (1-19)</h1>
     <h1>
         <input id="userInput"> <br> <br>
         <button onclick="myFunction()"> Continuar </button>
@@ -77,8 +77,8 @@
             let userInput = document.querySelector("#userInput");
             let message = document.querySelector("#message");
     
-            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
-                alert("Por favor, introduce un número válido entre 1 y 5.");
+            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 19) {
+                alert("Por favor, introduce un número válido entre 1 y 19.");
                 userInput.value = ""; // Clear the input field
             } else {
                 const xhr = new XMLHttpRequest();
