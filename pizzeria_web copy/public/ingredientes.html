@@ -66,13 +66,20 @@
                 alert("Por favor, introduce un número válido entre 1 y 5.");
                 userInput.value = ""; // Clear the input field
             } else {
-                // Make an AJAX request to the server to save the data
                 const xhr = new XMLHttpRequest();
                 xhr.open("POST", "/saveToCSV", true);
                 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+                xhr.addEventListener("load", function () {
+                    if (xhr.status === 200) {
+                        console.log('User input received:', userInput.value);
+                        window.location.href = 'tecnicascoccion.html';
+                    } else {
+                        console.error('Error en la solicitud:', xhr.status);
+                    }
+                });
+
                 xhr.send(JSON.stringify({ userInput: userInput.value }));
-    
-                window.location.href = 'tecnicascoccion.html';
             }
         }
     </script>

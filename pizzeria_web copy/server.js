@@ -48,6 +48,8 @@ app.get('/delizioso-logo-final2.png', (req, res) => {
 
 app.post('/saveToCSV', (req, res) => {
     const userInput = req.body.userInput;
+    console.log('User input received:', userInput);
+
 
     // Validate the input here if needed
 
