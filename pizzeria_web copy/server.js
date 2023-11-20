@@ -42,6 +42,9 @@ app.get('/final.html', (req, res) => {
     res.sendFile(__dirname + '/public/final.html');
 });
 
+app.get('/nombre.html', (req, res) => {
+    res.sendFile(__dirname + '/public/nombre.html');
+});
 
 app.get('/styles.css', (req, res) => {
     res.sendFile(__dirname + '/public/styles.css');
@@ -86,6 +89,18 @@ app.post('/saveToCSV', (req, res) => {
             res.status(500).send('Error escribiendo en pizzeria.csv');
         });
 });
+
+app.get('/getCSV', (req, res) => {
+    fs.readFile('./pizzzeria.csv', 'utf8', (err, data) => {
+        if (err) {
+            console.error(`Error leyendo pizzzeria.csv: ${err}`);
+            res.status(500).send('Error leyendo pizzzeria.csv');
+        } else {
+            res.send(data);
+        }
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
