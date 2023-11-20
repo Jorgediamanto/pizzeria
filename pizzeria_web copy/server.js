@@ -9,8 +9,34 @@ const port = 5501;
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
-app.use(express.static('public'));
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/lasalsa.html', (req, res) => {
+    res.sendFile(__dirname + '/public/lasalsa.html');
+});
+
+app.get('/extras.html', (req, res) => {
+    res.sendFile(__dirname + '/public/extras.html');
+});
+
+app.get('/ingredientes.html', (req, res) => {
+    res.sendFile(__dirname + '/public/ingredientes.html');
+});
+
+app.get('/maridajes.html', (req, res) => {
+    res.sendFile(__dirname + '/public/maridajes.html');
+});
+
+app.get('/presentacion.html', (req, res) => {
+    res.sendFile(__dirname + '/public/presentacion.html');
+});
+
+app.get('/tecnicascoccion.html', (req, res) => {
+    res.sendFile(__dirname + '/public/tecnicascoccion.html');
+});
 app.post('/saveToCSV', (req, res) => {
     const userInput = req.body.userInput;
 
