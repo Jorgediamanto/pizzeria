@@ -37,6 +37,15 @@ app.get('/presentacion.html', (req, res) => {
 app.get('/tecnicascoccion.html', (req, res) => {
     res.sendFile(__dirname + '/public/tecnicascoccion.html');
 });
+
+app.get('/styles.css', (req, res) => {
+    res.sendFile(__dirname + '/public/styles.css');
+});
+
+app.get('/delizioso-logo-final2.png', (req, res) => {
+    res.sendFile(__dirname + '/public/delizioso-logo-final2.png');
+});
+
 app.post('/saveToCSV', (req, res) => {
     const userInput = req.body.userInput;
 

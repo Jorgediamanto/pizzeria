@@ -66,15 +66,13 @@
                 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                 xhr.send(JSON.stringify({ userInput: userInput.value }));
     
-                message.innerHTML = "Tu masa elegida es: " + userInput.value;
+                window.location.href = 'maridajes.html';
             }
         }
     </script>
     
 
-    <footer>
-        <a href="tecnicascoccion.html">Volver a la salsa</a>
-      </footer>  <!-- Resto del contenido -->
+
 
 </body>
 </html>
