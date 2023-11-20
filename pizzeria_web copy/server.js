@@ -18,10 +18,9 @@ app.post('/saveToCSV', (req, res) => {
 
     // Modificar el archivo CSV directamente en lugar de llamar al script de Python
     const csvWriter = createCsvWriter({
-        path: 'public/pizzeria.csv',
+        path: '/Users/jorgediamantopoulos/Documents/GitHub/pizzeria/pizzeria_web copy/public/pizzzeria.csv',
         header: [
-            { id: 'column1', title: 'Columna1' },
-            { id: 'column2', title: 'Columna2' },
+            { id: 'column1', title: 'Número' },
             // Agrega más columnas según tus necesidades
         ],
         append: true, // Para agregar a un archivo existente
@@ -30,9 +29,8 @@ app.post('/saveToCSV', (req, res) => {
     // Datos que deseas escribir en el CSV
     const data = [
         {
-            column1: 'Valor1',
-            column2: 'Valor2',
-            // Agrega más valores según tus necesidades
+            column1: userInput,
+            // Puedes agregar más columnas según tus necesidades
         },
     ];
 
