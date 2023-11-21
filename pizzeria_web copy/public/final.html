@@ -42,10 +42,14 @@
                         // Usar nombres específicos para cada línea
                         const names = ["masa", "salsa", "ingredientes", "coccion", "presentacion", "maridaje", "extras", "nombre"];
 
-                        if (index < names.length) {
+                        // Calcular el índice actual en grupos de 8
+                        const groupIndex = Math.floor(index / 8);
+
+                        // Solo mostrar si el índice actual es menor que 8 (o el número deseado)
+                        if (groupIndex < 8) {
                             const label = document.createElement("label");
-                            label.htmlFor = names[index];
-                            label.textContent = `${names[index].charAt(0).toUpperCase() + names[index].slice(1)}:`;
+                            label.htmlFor = names[index % names.length];
+                            label.textContent = `${names[index % names.length].charAt(0).toUpperCase() + names[index % names.length].slice(1)}:`;
 
                             textElement.textContent = line.trim(); // Puedes ajustar esto según tu CSV
 
