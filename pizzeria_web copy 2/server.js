@@ -2,9 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const { spawn } = require('child_process');
+const path = require('path');
+const pythonExecutable = process.platform === 'win32' ? 'python.exe' : 'python3';
 
 const app = express();
 const port = 5501;
+
+let currentRecommendation = '';
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -58,31 +63,41 @@ app.post('/saveToCSV', (req, res) => {
     const userInput = req.body.userInput;
     console.log('User input received:', userInput);
 
-
-    // Validate the input here if needed
-
-    // Modificar el archivo CSV directamente en lugar de llamar al script de Python
     const csvWriter = createCsvWriter({
         path: './pizzzeria.csv',
         header: [
             { id: 'column1', title: 'Número' },
-            // Agrega más columnas según tus necesidades
         ],
-        append: true, // Para agregar a un archivo existente
+        append: true,
     });
 
-    // Datos que deseas escribir en el CSV
     const data = [
-        {
-            column1: userInput,
-            // Puedes agregar más columnas según tus necesidades
-        },
+        { column1: userInput },
     ];
 
     csvWriter.writeRecords(data)
         .then(() => {
             console.log('Datos escritos en pizzeria.csv');
-            res.send('Datos escritos en pizzeria.csv');
+
+            const pythonProcess = spawn(pythonExecutable, [path.join(__dirname, 'tu_script_python.py'), userInput]);
+
+            let pythonScriptOutput = '';
+
+            pythonProcess.stdout.on('data', (data) => {
+                console.log(`stdout: ${data}`);
+                pythonScriptOutput += data.toString();
+            });
+
+            pythonProcess.stderr.on('data', (data) => {
+                console.error(`stderr: ${data}`);
+            });
+
+            pythonProcess.on('close', (code) => {
+                // Envía la respuesta solo después de que el script de Python se haya ejecutado completamente
+
+                // Modifica el contenido de la respuesta según tus necesidades
+                res.send(pythonScriptOutput);
+            });
         })
         .catch((error) => {
             console.error(`Error escribiendo en pizzeria.csv: ${error}`);
@@ -101,6 +116,22 @@ app.get('/getCSV', (req, res) => {
     });
 });
 
+app.get('/getRecommendation', (req, res) => {
+    res.json({ recommendation: currentRecommendation });
+    // Borra la recomendación después de enviarla para que no se muestre de nuevo en la próxima solicitud
+    currentRecommendation = '';
+});
+
+// Añade esta ruta al servidor Express
+app.post('/sendRecommendation', (req, res) => {
+    const recommendationMessage = req.body.message;
+
+    // Almacena temporalmente la recomendación
+    currentRecommendation = recommendationMessage;
+
+    // Envía la recomendación al cliente
+    res.json({ recommendation: recommendationMessage });
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
@@ -109,3 +140,4 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
+

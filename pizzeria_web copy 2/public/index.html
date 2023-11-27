@@ -96,6 +96,42 @@
         }
     </script>
     
+    <script>
+        function myFunction() {
+            let userInput = document.querySelector("#userInput");
+            let message = document.querySelector("#message");
+    
+            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
+                alert("Por favor, introduce un número válido entre 1 y 5.");
+                userInput.value = ""; // Clear the input field
+            } else {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/saveToCSV", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+                xhr.addEventListener("load", function () {
+                    if (xhr.status === 200) {
+                        console.log('User input received:', userInput.value);
+                        // Redirigir solo si la respuesta del servidor es exitosa
+                        window.location.href = 'lasalsa.html';
+                    } else {
+                        console.error('Error en la solicitud:', xhr.status);
+                    }
+                });
+    
+                xhr.send(JSON.stringify({ userInput: userInput.value }));
+    
+                // Agregar código para recibir la respuesta del servidor y mostrar el mensaje
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        message.innerHTML = response.message;
+                    }
+                };
+            }
+        }
+    </script>
+    
 
 </body>
 </html>
