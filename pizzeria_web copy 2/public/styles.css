@@ -1,0 +1,453 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+h1{
+    text-align: center;
+    color: rgb(134, 50, 50);
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.team-roster {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: rgb(50, 127, 134);
+}
+
+/* Estilos para los jugadores */
+.player {
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.player img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.player h2 {
+    margin: 10px 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(50, 127, 134);
+}
+
+header {
+    background-color: #5c79e3;
+    color: #daf434;
+    text-align: center;
+    padding: 20px 0;
+   
+}    
+
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #df3f17;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+main {
+    background-color: #4358cf;
+    
+    
+    
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #38cb7f;
+    color: #e62424;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.boton1, .boton2, .boton3, .boton4, .boton5 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+  }
+
+  .boton1:hover, .boton2:hover, .boton3:hover, .boton4:hover, .boton5:hover{
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+  }
+
+  .boton1:hover ~ .info1 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+
+  .boton2:hover ~ .info2 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+  .boton3:hover ~ .info3 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+  .boton4:hover ~ .info4 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+  .boton5:hover ~ .info5 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+  }
+  
+  .contenedor {
+    text-align: center;
+    position: relative;
+  }
+  
+
+  .info1, .info2, .info3, .info4, .info5 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .boton6, .boton7, .boton8, .boton9, .boton10 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.boton6:hover, .boton7:hover, .boton8:hover, .boton9:hover, .boton10:hover {
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+
+.boton6:hover ~ .info6,
+.boton7:hover ~ .info7,
+.boton8:hover ~ .info8,
+.boton9:hover ~ .info9,
+.boton10:hover ~ .info10 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+}
+
+.info6, .info7, .info8, .info9, .info10 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: rgb(230, 46, 144);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+ .boton11, .boton12, .boton13, .boton14, .boton15 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.boton11:hover, .boton12:hover, .boton13:hover, .boton14:hover, .boton15:hover{
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+.boton11:hover ~ .info11, .boton12:hover ~ .info12, .boton13:hover ~ .info13, .boton14:hover ~ .info14, .boton15:hover ~ .info15{
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+}
+
+.info11, .info12, .info13, .info14, .info15{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.boton16,
+.boton17,
+.boton18,
+.boton19,
+.boton20 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.boton16:hover,
+.boton17:hover,
+.boton18:hover,
+.boton19:hover,
+.boton20:hover {
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+
+.boton16:hover ~ .info16,
+.boton17:hover ~ .info17,
+.boton18:hover ~ .info18,
+.boton19:hover ~ .info19,
+.boton20:hover ~ .info20 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+}
+
+.info16,
+.info17,
+.info18,
+.info19,
+.info20 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+/* ... Estilos anteriores ... */
+
+.boton21,
+.boton22,
+.boton23,
+.boton24,
+.boton25 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.boton21:hover,
+.boton22:hover,
+.boton23:hover,
+.boton24:hover,
+.boton25:hover {
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+
+.boton21:hover ~ .info21,
+.boton22:hover ~ .info22,
+.boton23:hover ~ .info23,
+.boton24:hover ~ .info24,
+.boton25:hover ~ .info25 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+}
+
+.info21,
+.info22,
+.info23,
+.info24,
+.info25 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ... Estilos anteriores ... */
+/* ... Estilos anteriores ... */
+
+.contenedor-dropdown {
+    display: inline-block;
+    margin: 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.dropbtn:hover {
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: rgb(50, 127, 134);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: gold;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ... Estilos anteriores ... */
+/* ... Estilos anteriores ... */
+
+.boton26,
+.boton27,
+.boton28,
+.boton29,
+.boton30 {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d9ed41;
+    color: rgb(50, 127, 134);
+    border: 3px solid;
+    border-color: darkorchid;
+    transition: background-color 0.05s ease;
+}
+
+.boton26:hover,
+.boton27:hover,
+.boton28:hover,
+.boton29:hover,
+.boton30:hover {
+    background-color: gold;
+    border: 4px solid;
+    border-color: gold;
+}
+
+.boton26:hover ~ .info26,
+.boton27:hover ~ .info27,
+.boton28:hover ~ .info28,
+.boton29:hover ~ .info29,
+.boton30:hover ~ .info30 {
+    display: block; /* Mostrar la información cuando se hace hover sobre el botón */
+}
+
+.info26,
+.info27,
+.info28,
+.info29,
+.info30 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hotpink;
+    border: 3px solid #35e73e;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ... Estilos anteriores ... */

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla del Equipo de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Pizzería a domicilio.</h1>
+        <img src="delizioso-logo-final2.png" alt="Logo del Equipo" width="600" height="150">
+    </header>
+
+    
+
+    <h1> Cual es tu nombre?</h1>
+    <h1>
+        <input id="userInput"> <br> <br>
+        <button onclick="myFunction()"> Continuar </button>
+    </h1>
+    <h1 id="message"> </h1>
+
+    <script>
+        function myFunction() {
+            let userInput = document.querySelector("#userInput");
+            let message = document.querySelector("#message");
+
+            if (userInput.value.trim() === "") {
+                alert("Por favor, introduce tu nombre.");
+                userInput.value = ""; // Clear the input field
+            } else {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/saveToCSV", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+                xhr.addEventListener("load", function () {
+                    if (xhr.status === 200) {
+                        console.log('User input received:', userInput.value);
+                        window.location.href = 'final.html';
+                    } else {
+                        console.error('Error en la solicitud:', xhr.status);
+                    }
+                });
+
+                xhr.send(JSON.stringify({ userInput: userInput.value }));
+            }
+        }
+
+        
+    </script>
+
+</body>
+
+</html>
+

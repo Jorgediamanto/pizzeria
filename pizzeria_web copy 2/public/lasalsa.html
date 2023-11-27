@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla del Equipo de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Pizzería a domicilio.</h1>
+        <img src="delizioso-logo-final2.png" alt="Logo del Equipo"
+             width="600"
+             height="150">
+    </header>
+
+    
+
+    <section class="team-roster">
+        <!-- Tu código existente para las masas -->
+
+        <!-- Nueva sección para salsas -->
+        <div class="contenedor">
+            <a class="boton6">Salsa de Tomate Tradicional</a>
+            <div id="salsa1" class="info6">Elaborada con tomates frescos y hierbas seleccionadas.
+                Un toque de ajo y aceite de oliva para un sabor auténtico.
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <a class="boton7">Salsa Pesto Genovés</a>
+            <div id="salsa2" class="info7">Mezcla de albahaca fresca, piñones, queso parmesano y ajo.
+                Textura cremosa y deliciosa.
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <a class="boton8">Salsa de Queso Alfredo</a>
+            <div id="salsa3" class="info8">Una salsa cremosa a base de queso parmesano y crema.
+                Perfecta para los amantes del queso.
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <a class="boton9">Salsa BBQ Ahumada</a>
+            <div id="salsa4" class="info9">Una salsa dulce y ahumada con un toque de especias.
+                Ideal para quienes disfrutan de un toque de barbacoa.
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <a class="boton10">Salsa de Champiñones y Trufa</a>
+            <div id="salsa5" class="info10">Salsa rica y indulgente con champiñones y aroma de trufa.
+                Una opción gourmet para tus pizzas.
+            </div>
+        </div>
+    </section>
+
+    <h1> Elige tu salsa: (1, 2, 3, 4, 5)</h1>
+    <h1>
+        <input id="userInput"> <br> <br>
+        <button onclick="myFunction()"> Continuar </button>
+    </h1>
+    <h1 id="message"> </h1>
+    
+    <script>
+        function myFunction() {
+            let userInput = document.querySelector("#userInput");
+            let message = document.querySelector("#message");
+    
+            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
+                alert("Por favor, introduce un número válido entre 1 y 5.");
+                userInput.value = ""; // Clear the input field
+            } else {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/saveToCSV", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+                xhr.addEventListener("load", function () {
+                    if (xhr.status === 200) {
+                        console.log('User input received:', userInput.value);
+                        window.location.href = 'ingredientes.html';
+                    } else {
+                        console.error('Error en la solicitud:', xhr.status);
+                    }
+                });
+
+                xhr.send(JSON.stringify({ userInput: userInput.value }));
+    
+                
+            }
+        }
+    </script>
+    
+
+    
+</body>
+</html>
