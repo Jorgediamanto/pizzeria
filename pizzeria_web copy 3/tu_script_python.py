@@ -1,4 +1,3 @@
-# tu_script_python.py
 import csv
 import subprocess
 import json
@@ -37,6 +36,7 @@ class PizzaBuilder:
 
 def build_pizza(user_input):
     # Lee el CSV y realiza la lógica para construir la pizza
+    mensaje_mostrado = False  # Variable para asegurar que el mensaje de recomendación se muestre solo una vez
     with open('pizzzeria.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
@@ -47,17 +47,18 @@ def build_pizza(user_input):
             pizza_builder = PizzaBuilder(size='medium')
             if row['column1'] == user_input:
                 pizza_builder.set_cheese('mozzarella').set_pepperoni(True).set_bacon(True)
+                
+                # Muestra el mensaje de recomendación específico si el valor es 2
+                if user_input == '2' and not mensaje_mostrado:
+                    print("Recomendación: La salsa 2 es muy recomendada al hacer una buena combinación.")
+                    mensaje_mostrado = True
+                else:
+                    print(f'Recomendación: {str(pizza_builder.build())}')
+                
+                # No es necesario enviar la recomendación al servidor Express en este ejemplo
             else:
                 # Implementa lógica para otras opciones
                 pass
-
-            pizza = pizza_builder.build()
-
-            # Imprime la recomendación
-            recommendation_message = f'Recomendación: {str(pizza)}'
-
-            # Envia la recomendación al servidor Express
-            subprocess.run(['curl', '-X', 'POST', 'http://localhost:5501/sendRecommendation', '-H', 'Content-Type: application/json', '-d', json.dumps({'message': recommendation_message})])
 
 if __name__ == "__main__":
     import sys
