@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla del Equipo de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+</head>
+<body>
+    
+    <header>
+        <h1>Pizzería a domicilio.</h1>
+        <img src="delizioso-logo-final2.png" alt="Logo del Equipo"
+                 width="600"
+                 height="150">
+    </header>
+
+    
+
+    <section class="team-roster">
+        
+
+        <div class="contenedor">
+            <a class="boton1">Masa Delgada de Trigo Integral</a>
+            <div id="masa1" class="info1">Elaborada con harina de trigo integral de alta calidad.
+                Fermentación controlada para lograr una textura fina y crujiente.
+                Ingredientes especiales como aceitunas, tomates secos y hierbas frescas.
+            </div>
+        </div>
+    
+        <div class="contenedor">
+            <a class="boton2" >Masa de Centeno Fermentada</a>
+            <div id="masa2" class="info2">Mezcla de harina de centeno y trigo para una profundidad de sabor.
+                Larga fermentación para desarrollar complejidad y elasticidad.
+                Ingredientes especiales como semillas de comino y miel.
+            </div>
+        </div>
+    
+        <div class="contenedor">
+            <a class="boton3" >Masa de Espelta con Toppings Gourmet</a>
+            <div id="masa3" class="info3">Elaborada con harina de espelta, una alternativa más nutritiva al trigo.
+                Fermentación media para una textura equilibrada.
+                Ingredientes especiales como queso de cabra, prosciutto y rúcula.
+            </div>
+        </div>
+    
+        <div class="contenedor">
+            <a class="boton4" >Masa de Coliflor Premium</a>
+            <div id="masa4" class="info4">Una opción baja en carbohidratos y rica en nutrientes.
+                Fermentación corta para mantener la textura ligera.
+                Ingredientes especiales como pesto de albahaca y piñones.
+            </div>
+        </div>
+        
+        <div class="contenedor">
+            <a class="boton5" >Masa de Papa y Romero</a>
+            <div id="masa5" class="info5">Elaborada con papas para una textura suave y esponjosa.
+                Fermentación media para desarrollar sabores.
+                Ingredientes especiales como romero fresco y aceite de oliva trufado.
+            </div>
+        </div>
+    </section>
+    <h1> Elige tu masa: (1, 2, 3, 4, 5)</h1>
+    <h1>
+        <input id="userInput"> <br> <br>
+        <button onclick="myFunction()"> Continuar </button>
+    </h1>
+    <h1 id="message"> </h1>
+    
+    <script>
+        function myFunction() {
+            let userInput = document.querySelector("#userInput");
+            let message = document.querySelector("#message");
+    
+            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
+                alert("Por favor, introduce un número válido entre 1 y 5.");
+                userInput.value = ""; // Clear the input field
+            } else {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/saveToCSV", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+                xhr.addEventListener("load", function () {
+                    if (xhr.status === 200) {
+                        console.log('User input received:', userInput.value);
+                        window.location.href = 'lasalsa.html';
+                    } else {
+                        console.error('Error en la solicitud:', xhr.status);
+                    }
+                });
+
+                xhr.send(JSON.stringify({ userInput: userInput.value }));
+            }
+        }
+    </script>
+    
+    <script>
+        function myFunction() {
+            let userInput = document.querySelector("#userInput");
+            let message = document.querySelector("#message");
+    
+            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
+                alert("Por favor, introduce un número válido entre 1 y 5.");
+                userInput.value = ""; // Clear the input field
+            } else {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/saveToCSV", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+                xhr.addEventListener("load", function () {
+                    if (xhr.status === 200) {
+                        console.log('User input received:', userInput.value);
+                        // Redirigir solo si la respuesta del servidor es exitosa
+                        window.location.href = 'lasalsa.html';
+                    } else {
+                        console.error('Error en la solicitud:', xhr.status);
+                    }
+                });
+    
+                xhr.send(JSON.stringify({ userInput: userInput.value }));
+    
+                // Agregar código para recibir la respuesta del servidor y mostrar el mensaje
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        message.innerHTML = response.message;
+                    }
+                };
+            }
+        }
+    </script>
+    
+
+</body>
+</html>

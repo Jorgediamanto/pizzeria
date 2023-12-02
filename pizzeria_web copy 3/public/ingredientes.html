@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla del Equipo de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Pizzería a domicilio.</h1>
+        <img src="delizioso-logo-final2.png" alt="Logo del Equipo"
+             width="600"
+             height="150">
+    </header>
+
+    
+
+    <section class="team-roster">
+        
+        <div class="contenedor">
+            <a class="boton11">Tomate San Marzano triturado</a>
+            <div id="salsa1" class="info11">Tomates San Marzano, conocidos por su pulpa carnosa y sabor dulce, triturados para crear una salsa de pizza clásica y deliciosa.
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <a class="boton12">Queso Mozzarella Fresco</a>
+            <div id="salsa2" class="info12">Queso mozzarella fresco y derretido, que aporta la textura cremosa y el sabor suave característico de una buena pizza.
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <a class="boton13">Pepperoni de Calidad Premium</a>
+            <div id="salsa3" class="info13">Pepperoni de alta calidad, ligeramente picante y curado al estilo tradicional para agregar un toque sabroso y jugoso a la pizza.
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <a class="boton14">Aceitunas Negras Enteras</a>
+            <div id="salsa4" class="info14">Aceitunas negras sin hueso, añadiendo un sabor salado y un toque mediterráneo a la pizza.
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <a class="boton15">Albahaca Fresca</a>
+            <div id="salsa5" class="info15">Hojas frescas de albahaca, con su aroma distintivo y sabor herbal, para dar un toque de frescura a la pizza después de salir del horno.
+            </div>
+        </div>
+    </section>
+
+    <h1> Elige tus ingredientes: (1, 2, 3, 4, 5)</h1>
+    <h1>
+        <input id="userInput"> <br> <br>
+        <button onclick="myFunction()"> Continuar </button>
+    </h1>
+    <h1 id="message"> </h1>
+    
+    <script>
+        function myFunction() {
+            let userInput = document.querySelector("#userInput");
+            let message = document.querySelector("#message");
+    
+            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
+                alert("Por favor, introduce un número válido entre 1 y 5.");
+                userInput.value = ""; // Clear the input field
+            } else {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/saveToCSV", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+                xhr.addEventListener("load", function () {
+                    if (xhr.status === 200) {
+                        console.log('User input received:', userInput.value);
+                        window.location.href = 'tecnicascoccion.html';
+                    } else {
+                        console.error('Error en la solicitud:', xhr.status);
+                    }
+                });
+
+                xhr.send(JSON.stringify({ userInput: userInput.value }));
+            }
+        }
+    </script>
+    
+
+</body>
+</html>

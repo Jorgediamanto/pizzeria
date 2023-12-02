@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzería a domicilio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pizzería a domicilio.</h1>
+        <img src="delizioso-logo-final2.png" alt="Logo del Equipo" width="600" height="150">
+    </header>
+
+    <section class="team-roster">
+        <!-- Contenido anterior -->
+
+        <!-- Nueva sección de botones e información adicional -->
+        <div class="contenedor">
+            <a href="#" class="boton26">Borde queso</a>
+            <div id="info26" class="info26">Bordes rellenos de queso para una experiencia única.</div>
+        </div>
+
+        <div class="contenedor">
+            <a href="#" class="boton27">Acabado con Trufas</a>
+            <div id="info27" class="info27">Exquisito acabado con trufas negras o blancas para un toque gourmet inigualable.</div>
+        </div>
+
+        <div class="contenedor">
+            <a href="#" class="boton28">Caviar de Calidad</a>
+            <div id="info28" class="info28">Finaliza tu pizza con caviar de alta calidad para una experiencia lujosa.</div>
+        </div>
+
+        <div class="contenedor">
+            <a href="#" class="boton29">Borde ajo</a>
+            <div id="info29" class="info29">Bordes rellenos de ajo para una experiencia única.</div>
+        </div>
+
+        <div class="contenedor">
+            <a href="#" class="boton30">Finalización con Albahaca Fresca</a>
+            <div id="info30" class="info30">Decora tu pizza con hojas frescas de albahaca para un sabor y aroma irresistibles.</div>
+        </div>
+        <!-- Fin de la nueva sección -->
+
+    </section>
+
+    <h1> Elige los extras: (1, 2, 3, 4, 5)</h1>
+    <h1>
+        <input id="userInput"> <br> <br>
+        <button onclick="myFunction()"> Continuar </button>
+    </h1>
+    <h1 id="message"> </h1>
+    
+    <script>
+        function myFunction() {
+            let userInput = document.querySelector("#userInput");
+            let message = document.querySelector("#message");
+    
+            if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
+                alert("Por favor, introduce un número válido entre 1 y 5.");
+                userInput.value = ""; // Clear the input field
+            } else {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/saveToCSV", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+                xhr.addEventListener("load", function () {
+                    if (xhr.status === 200) {
+                        console.log('User input received:', userInput.value);
+                        window.location.href = 'nombre.html';
+                    } else {
+                        console.error('Error en la solicitud:', xhr.status);
+                    }
+                });
+
+                xhr.send(JSON.stringify({ userInput: userInput.value }));
+                
+            }
+        }
+    </script>
+    
+    
+</body>
+</html>

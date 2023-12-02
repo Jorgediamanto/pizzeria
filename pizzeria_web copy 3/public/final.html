@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla del Equipo de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Pizzería a domicilio.</h1>
+        <img src="delizioso-logo-final2.png" alt="Logo del Equipo" width="600" height="150">
+    </header>
+
+    <section class="team-roster" id="teamRoster">
+
+        <!-- Casillas de texto serán generadas dinámicamente aquí -->
+
+    </section>
+
+    <script>
+        // Cargar el contenido del CSV al cargar la página
+        window.addEventListener('load', function () {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "/getCSV", true);
+
+            xhr.addEventListener("load", function () {
+                if (xhr.status === 200) {
+                    const teamRoster = document.getElementById("teamRoster");
+                    const csvContent = xhr.responseText;
+
+                    // Dividir el contenido del CSV por líneas
+                    const lines = csvContent.split('\n');
+
+                    // Crear elementos de texto para cada línea
+                    lines.forEach(function (line, index) {
+                        const textElement = document.createElement("p");
+
+                        // Usar nombres específicos para cada línea
+                        const names = ["masa", "salsa", "ingredientes", "coccion", "presentacion", "maridaje", "extras", "nombre"];
+
+                        // Calcular el índice actual en grupos de 8
+                        const groupIndex = Math.floor(index / 8);
+
+                        // Solo mostrar si el índice actual es menor que 8 (o el número deseado)
+                        if (groupIndex < 8) {
+                            const label = document.createElement("label");
+                            label.htmlFor = names[index % names.length];
+                            label.textContent = `${names[index % names.length].charAt(0).toUpperCase() + names[index % names.length].slice(1)}:`;
+
+                            textElement.textContent = line.trim(); // Puedes ajustar esto según tu CSV
+
+                            const div = document.createElement("div");
+                            div.classList.add("contenedor");
+                            div.appendChild(label);
+                            div.appendChild(textElement);
+                            teamRoster.appendChild(div);
+                        }
+                    });
+                } else {
+                    console.error('Error en la solicitud:', xhr.status);
+                }
+            });
+
+            xhr.send();
+        });
+    </script>
+    
+
+</body>
+
+</html>
