@@ -83,6 +83,36 @@
             }
         }
     </script>
+
+<script>
+    // Agrega este script para obtener y mostrar la recomendación
+    document.addEventListener('DOMContentLoaded', function () {
+    const recommendationElement = document.getElementById('recommendation');
+
+    // Función para obtener la recomendación del servidor
+    function getRecommendation() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/getRecommendation", true);
+
+        xhr.addEventListener("load", function () {
+            if (xhr.status === 200) {
+                const recommendation = JSON.parse(xhr.responseText);
+                recommendationElement.querySelector('span').textContent = recommendation.recommendation;
+            } else {
+                console.error('Error obteniendo la recomendación:', xhr.status);
+            }
+        });
+
+        xhr.send();
+    }
+
+    // Llama a la función para obtener la recomendación cuando la página se carga
+    getRecommendation();
+    });
+   
+</script>
+
+<h2 id="recommendation">Recomendación: <span></span></h2>
     
 
 </body>

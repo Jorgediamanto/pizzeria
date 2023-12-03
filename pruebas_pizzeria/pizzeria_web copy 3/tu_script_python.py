@@ -2,6 +2,8 @@ import csv
 import requests
 import json
 
+
+
 class Pizza:
     def __init__(self, builder):
         self.size = builder.size
@@ -34,6 +36,7 @@ class PizzaBuilder:
     def build(self):
         return Pizza(self)
 
+
 def build_pizza(user_input):
     mensaje_mostrado = False
     with open('pizzzeria.csv', newline='') as csvfile:
@@ -51,8 +54,8 @@ def build_pizza(user_input):
                     enviar_recomendacion_al_servidor(recomendacion)
                     
                     mensaje_mostrado = True
-                # else:
-                #     print(f'Recomendación: {str(pizza_builder.build())}')
+                else:
+                    print(f'Recomendación: {str(pizza_builder.build())}')
             else:
                 pass
 
@@ -67,6 +70,7 @@ def enviar_recomendacion_al_servidor(recomendacion):
         print("Recomendación enviada correctamente al servidor.")
     else:
         print(f"Error al enviar la recomendación al servidor. Código de estado: {response.status_code}")
+
 
 
 if __name__ == "__main__":
