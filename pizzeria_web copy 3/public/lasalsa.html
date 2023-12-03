@@ -66,43 +66,45 @@
     
     <script>
     function myFunction() {
-        let userInput = document.querySelector("#userInput");
-        let message = document.querySelector("#message");
-        let salsaSection = document.querySelector("#salsa-section"); // Agregado
+    let userInput = document.querySelector("#userInput");
+    let message = document.querySelector("#message");
+    // Corrige el ID del contenedor si es necesario
+    let salsaSection = document.querySelector("#salsa-section"); 
 
-        if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
-            alert("Por favor, introduce un número válido entre 1 y 5.");
-            userInput.value = ""; // Clear the input field
-        } else {
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "/saveToCSV", true);
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    if (isNaN(userInput.value) || userInput.value < 1 || userInput.value > 5) {
+        alert("Por favor, introduce un número válido entre 1 y 5.");
+        userInput.value = ""; // Clear the input field
+    } else {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/saveToCSV", true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-            xhr.addEventListener("load", function () {
-                if (xhr.status === 200) {
-                    console.log('User input received:', userInput.value);
+        xhr.addEventListener("load", function () {
+            if (xhr.status === 200) {
+                console.log('User input received:', userInput.value);
 
-                    // Muestra el mensaje de recomendación en la sección correspondiente
-                    const recommendation = JSON.parse(xhr.responseText);
-                    message.textContent = recommendation.message;
+                // Muestra el mensaje de recomendación en la sección correspondiente
+                const recommendation = JSON.parse(xhr.responseText);
+                message.textContent = recommendation.message;
 
-                    // Puedes personalizar el manejo de la recomendación en función de la categoría
-                    // En este ejemplo, asumimos que la categoría es "salsa"
-                    if (recommendation.category === 'salsa') {
-                        // Haz algo específico para la sección de salsa
-                        salsaSection.style.backgroundColor = 'lightgreen'; // Cambia el color de fondo, por ejemplo
-                    }
-
-                    // Redirigir solo si la respuesta del servidor es exitosa
-                    window.location.href = 'ingredientes.html';
-                } else {
-                    console.error('Error en la solicitud:', xhr.status);
+                // Puedes personalizar el manejo de la recomendación en función de la categoría
+                // En este ejemplo, asumimos que la categoría es "salsa"
+                if (recommendation.category === 'salsa') {
+                    // Haz algo específico para la sección de salsa
+                    salsaSection.style.backgroundColor = 'lightgreen'; // Cambia el color de fondo, por ejemplo
                 }
-            });
 
-            xhr.send(JSON.stringify({ userInput: userInput.value }));
-        }
+                // Redirige solo si la respuesta del servidor es exitosa
+                window.location.href = 'ingredientes.html';
+            } else {
+                console.error('Error en la solicitud:', xhr.status);
+            }
+        });
+
+        xhr.send(JSON.stringify({ userInput: userInput.value }));
     }
+}
+
 </script>
 
 

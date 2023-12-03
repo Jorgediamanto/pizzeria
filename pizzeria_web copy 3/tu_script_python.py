@@ -1,5 +1,5 @@
 import csv
-import subprocess
+import requests
 import json
 
 class Pizza:
@@ -35,30 +35,39 @@ class PizzaBuilder:
         return Pizza(self)
 
 def build_pizza(user_input):
-    # Lee el CSV y realiza la lógica para construir la pizza
-    mensaje_mostrado = False  # Variable para asegurar que el mensaje de recomendación se muestre solo una vez
+    mensaje_mostrado = False
     with open('pizzzeria.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            # Utiliza row['column1'] para obtener el número guardado en el CSV
-            # Implementa la lógica para construir la pizza según el número
-
-            # Ejemplo: Construir pizza con PizzaBuilder
             pizza_builder = PizzaBuilder(size='medium')
             if row['column1'] == user_input:
                 pizza_builder.set_cheese('mozzarella').set_pepperoni(True).set_bacon(True)
                 
-                # Muestra el mensaje de recomendación específico si el valor es 2
                 if user_input == '2' and not mensaje_mostrado:
-                    print("Recomendación: La salsa 2 es muy recomendada al hacer una buena combinación.")
+                    recomendacion = "La salsa 2 es muy recomendada al hacer una buena combinación."
+                    print(f"Recomendación: {recomendacion}")
+                    
+                    # Enviar la recomendación al servidor Express
+                    enviar_recomendacion_al_servidor(recomendacion)
+                    
                     mensaje_mostrado = True
                 else:
                     print(f'Recomendación: {str(pizza_builder.build())}')
-                
-                # No es necesario enviar la recomendación al servidor Express en este ejemplo
             else:
-                # Implementa lógica para otras opciones
                 pass
+
+def enviar_recomendacion_al_servidor(recomendacion):
+    url = 'http://localhost:5501/sendRecommendation'
+    headers = {'Content-Type': 'application/json'}
+    data = {'message': recomendacion}
+    
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    
+    if response.status_code == 200:
+        print("Recomendación enviada correctamente al servidor.")
+    else:
+        print(f"Error al enviar la recomendación al servidor. Código de estado: {response.status_code}")
+
 
 if __name__ == "__main__":
     import sys
