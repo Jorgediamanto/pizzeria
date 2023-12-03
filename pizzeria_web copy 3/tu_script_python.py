@@ -51,8 +51,8 @@ def build_pizza(user_input):
                     enviar_recomendacion_al_servidor(recomendacion)
                     
                     mensaje_mostrado = True
-                else:
-                    print(f'Recomendación: {str(pizza_builder.build())}')
+                # else:
+                #     print(f'Recomendación: {str(pizza_builder.build())}')
             else:
                 pass
 
