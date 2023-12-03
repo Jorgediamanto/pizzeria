@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantilla del Equipo de Fútbol</title>
     <link rel="stylesheet" href="styles.css">
-    
-
 </head>
 <body>
     
@@ -17,11 +15,7 @@
                  height="150">
     </header>
 
-    
-
     <section class="team-roster">
-        
-
         <div class="contenedor">
             <a class="boton1">Masa Delgada de Trigo Integral</a>
             <div id="masa1" class="info1">Elaborada con harina de trigo integral de alta calidad.
@@ -65,7 +59,8 @@
     <h1> Elige tu masa: (1, 2, 3, 4, 5)</h1>
     <h1>
         <input id="userInput"> <br> <br>
-        <button onclick="myFunction()"> Continuar </button>
+        <button onclick="myFunction()">Continuar</button>
+        <button onclick="changeColor()">Cambiar Color</button>
     </h1>
     <h1 id="message"> </h1>
     
@@ -94,8 +89,20 @@
                 xhr.send(JSON.stringify({ userInput: userInput.value }));
             }
         }
-    </script>
-    
 
+        function changeColor() {
+            const randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
 </body>
 </html>

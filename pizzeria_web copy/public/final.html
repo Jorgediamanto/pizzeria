@@ -18,7 +18,9 @@
     <section class="team-roster" id="teamRoster">
 
         <!-- Casillas de texto serán generadas dinámicamente aquí -->
-
+        <h1>
+        <button onclick="changeColor()">Cambiar Color</button>
+    </h1>
     </section>
 
     <script>
@@ -67,6 +69,20 @@
 
             xhr.send();
         });
+
+        function changeColor() {
+            const randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
     </script>
     
 
