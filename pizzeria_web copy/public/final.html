@@ -70,10 +70,14 @@
             xhr.send();
         });
 
-        function changeColor() {
-            const randomColor = getRandomColor();
-            document.body.style.backgroundColor = randomColor;
+
+        function updateMessage() {
+            // Cambiar el contenido del elemento con id "message"
+            const messageElement = document.getElementById("message");
+            messageElement.innerText = "¡Mensaje actualizado!";
         }
+
+        
 
         function getRandomColor() {
             const letters = '0123456789ABCDEF';

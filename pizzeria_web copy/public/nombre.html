@@ -22,6 +22,7 @@
         <input id="userInput"> <br> <br>
         <button onclick="myFunction()"> Continuar </button>
         <button onclick="changeColor()">Cambiar Color</button>
+        
     </h1>
     <h1 id="message"> </h1>
 
@@ -50,6 +51,7 @@
                 xhr.send(JSON.stringify({ userInput: userInput.value }));
             }
         }
+        
         function changeColor() {
             const randomColor = getRandomColor();
             document.body.style.backgroundColor = randomColor;

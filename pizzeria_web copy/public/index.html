@@ -61,6 +61,7 @@
         <input id="userInput"> <br> <br>
         <button onclick="myFunction()">Continuar</button>
         <button onclick="changeColor()">Cambiar Color</button>
+        <button onclick="updateMessage()">Información extra</button>
     </h1>
     <h1 id="message"> </h1>
     
@@ -88,6 +89,11 @@
 
                 xhr.send(JSON.stringify({ userInput: userInput.value }));
             }
+        }
+        function updateMessage() {
+            // Cambiar el contenido del elemento con id "message"
+            const messageElement = document.getElementById("message");
+            messageElement.innerText = "La masa de pizza, hecha con harina de trigo, agua, levadura y sal, proporciona la base esponjosa y crujiente para este popular platillo. Su textura y sabor varían según factores como la fermentación y la inclusión de ingredientes alternativos, ofreciendo una amplia diversidad de estilos y opciones.";
         }
 
         function changeColor() {

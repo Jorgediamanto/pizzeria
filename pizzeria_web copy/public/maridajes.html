@@ -70,6 +70,7 @@
         <input id="userInput"> <br> <br>
         <button onclick="myFunction()"> Continuar </button>
         <button onclick="changeColor()">Cambiar Color</button>
+        <button onclick="updateMessage()">Información extra</button>
     </h1>
     <h1 id="message"> </h1>
     
@@ -97,6 +98,11 @@
 
                 xhr.send(JSON.stringify({ userInput: userInput.value }));
             }
+        }
+        function updateMessage() {
+            // Cambiar el contenido del elemento con id "message"
+            const messageElement = document.getElementById("message");
+            messageElement.innerText = "Los maridajes de una pizza, como vinos tintos ligeros, cervezas artesanales, o incluso una refrescante limonada, realzan los sabores y complementan la diversidad de ingredientes, creando una experiencia gastronómica equilibrada y deliciosa.";
         }
         function changeColor() {
             const randomColor = getRandomColor();

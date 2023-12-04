@@ -49,6 +49,7 @@
         <input id="userInput"> <br> <br>
         <button onclick="myFunction()"> Continuar </button>
         <button onclick="changeColor()">Cambiar Color</button>
+        <button onclick="updateMessage()">Información extra</button>
     </h1>
     <h1 id="message"> </h1>
     
@@ -81,6 +82,11 @@
             function changeColor() {
             const randomColor = getRandomColor();
             document.body.style.backgroundColor = randomColor;
+        }
+        function updateMessage() {
+            // Cambiar el contenido del elemento con id "message"
+            const messageElement = document.getElementById("message");
+            messageElement.innerText = "Los ingredientes extras de una pizza añaden una variedad de sabores y texturas que complementan la base de masa y crean una experiencia culinaria rica y deliciosa.";
         }
 
         function getRandomColor() {

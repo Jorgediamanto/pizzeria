@@ -49,6 +49,7 @@
         <input id="userInput"> <br> <br>
         <button onclick="myFunction()"> Continuar </button>
         <button onclick="changeColor()">Cambiar Color</button>
+        <button onclick="updateMessage()">Información extra</button>
     </h1>
     <h1 id="message"> </h1>
     
@@ -80,6 +81,11 @@
         function changeColor() {
             const randomColor = getRandomColor();
             document.body.style.backgroundColor = randomColor;
+        }
+        function updateMessage() {
+            // Cambiar el contenido del elemento con id "message"
+            const messageElement = document.getElementById("message");
+            messageElement.innerText = "Las técnicas de cocción de una pizza, ya sea en un horno de leña para lograr una corteza crujiente y burbujeante, o en un horno convencional para obtener una textura uniformemente dorada, contribuyen a resaltar los sabores y características únicas de este clásico platillo italiano.";
         }
 
         function getRandomColor() {
